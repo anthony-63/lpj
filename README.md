@@ -13,5 +13,4 @@ sudo make install
 ```
 lpj <project name>
 ```
-This will generate a basic project layout, you can change the binary name in the Makefile.
-I will add support for automatic binary name stuff, so you wont need to.
+This will generate a basic project template
