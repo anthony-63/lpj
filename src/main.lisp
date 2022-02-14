@@ -2,12 +2,9 @@
 
 (defun mkproj (name)
   (format t "Creating project ~S~%" name)
-  (uiop:run-program (format nil "tar -xvf /bin/lpj_assets/template.tar"))
-  (uiop:run-program (format nil "mv template ~S" name))
-  (uiop:run-program (concatenate 'string 
-                                 (concatenate 'string "sed -i 's/bin\\/template/bin\\/" name) 
-                                 (concatenate 'string 
-                                              (concatenate 'string "/g' " name) "/Makefile"))))
+  (sb-ext:run-program "/bin/tar" (list "-xvf" "/bin/lpj_assets/template.tar"))
+  (sb-ext:run-program "/bin/mv" (list "template" name))
+  (sb-ext:run-program "/bin/sed" (list "-i" (concatenate 'string (concatenate 'string "'s/bin\\/template/bin\\/" name) "/g") (concatenate 'string name "/Makefile")))) 
 
 (defun nil-name ()
   (format t "Invalid project name provided!~%"))
